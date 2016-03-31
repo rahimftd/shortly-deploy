@@ -6,7 +6,7 @@
   });
 </script>
 
-<% if (process.env.NODE_ENV === 'production') { %>
+<% if (process.env.PWD === '/root/production/www') { %>
   <script src="/dist/build.min.js"></script>
 <% } else { %>
   <script src='/client/app.js'></script>

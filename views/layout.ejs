@@ -5,7 +5,7 @@
     <title>Shortly</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <% if (process.env.NODE_ENV === 'production') { %>
+    <% if (process.env.PWD === '/root/production/www') { %>
       <script src="/dist/build.min.js"></script>
     <% } else { %>
       <script src="/lib/jquery.js"></script>

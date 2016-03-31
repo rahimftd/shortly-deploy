@@ -108,7 +108,6 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['mochaTest', 'concat', 'eslint', 'uglify']);
 
   grunt.registerTask('upload', function(n) {
-    console.log('IN UPLOAD MODE!!!!!!!!');
     if (grunt.option('prod')) {
       grunt.task.run(['gitpush']);
     } else {

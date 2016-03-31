@@ -1,6 +1,26 @@
-var db = require('../config');
+var mongoose = require('mongoose');
+var userSchema = require('../config').userSchema;
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
+
+userSchema.methods.initialize = function(username, password) {
+  //new User({ username: username, password: password})
+};
+userSchema.methods.comparePassword = function(attemptedPassword) {
+  return new Promise(function(resolve, reject) {
+    bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(isMatch);
+      }
+    });
+  });
+};
+
+//hashPassword
+
+var User = mongoose.model('User', userSchema);
 
 var User = db.Model.extend({
   tableName: 'users',

@@ -5,20 +5,28 @@ mongoose.connect('mongodb://localhost:27017/shortlydb');
 
 var db = mongoose.connection;
 
-db.once('open', function() {
-  var urlSchema = new Schema({
-    url: String,
-    baseUrl: String,
-    code: String,
-    title: String,
-    visits: Number
-  });
+db.on('error', console.error.bind(console, 'connection error:'));
 
-  var userSchema = new Schema({
-    username: String,
-    password: String
-  });
+module.exports = db;
 
-});
+// db.once('open', function() {
+//   var urlSchema = new Schema({
+//     url: String,
+//     baseUrl: String,
+//     code: String,
+//     title: String,
+//     visits: Number
+//   });
 
-module.exports = { userSchema: userSchema, urlSchema: urlSchema };
+//   var userSchema = new Schema({
+//     username: String,
+//     password: String
+//   });
+
+//   var User = mongoose.model('User', userSchema);
+
+//   var newUser = new User({username: 'rahim'});
+
+//   module.exports = { userSchema: userSchema, urlSchema: urlSchema };
+// });
+
